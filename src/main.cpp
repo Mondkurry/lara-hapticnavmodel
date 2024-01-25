@@ -3,17 +3,34 @@
 #include <iostream>
 
 void testVisualization() {
-    int rows = 5;
-    int cols = 5;
+    Visualization vis(5, 5); // Assuming 5x5 for illustration
+    
+    vis.printVariable();
 
-    // Create an instance of Visualization with 5 rows and 5 columns
-    Visualization viz(rows, cols);
+    std::cout << "\n" << std::endl;
 
-    // Call the printVariable() method to display the array
-    viz.printVariable();
+    // Create a new array with some values
+    int** newDotStates = new int*[5];
+    for(int i = 0; i < 5; ++i) {
+        newDotStates[i] = new int[5];
+        for (int j = 0; j < 5; ++j) {
+            newDotStates[i][j] = i * j;
+        }
+    }
+
+    // Update the dots array with newDotStates
+    vis.updateArray(newDotStates);
+    
+    vis.printVariable();
+    // Don't forget to clean up newDotStates
+    for(int i = 0; i < 5; ++i) {
+        delete[] newDotStates[i];
+    }
+    delete[] newDotStates;
 }
 
 int main() {
     testVisualization();
     return 0;
 }
+

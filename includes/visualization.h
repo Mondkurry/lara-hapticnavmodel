@@ -11,6 +11,7 @@ public:
     Visualization(int num_rows, int num_cols);
     ~Visualization(); // Destructor to clean up the allocated memory.
     void printVariable();
+    void updateArray(int** newDotStates); 
 };
 
 #endif // VISUALIZATION_H

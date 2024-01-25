@@ -18,6 +18,14 @@ Visualization::~Visualization() {
     delete[] dots;
 }
 
+void Visualization::updateArray(int** newDotStates) {
+    for (int i = 0; i < num_rows; ++i) {
+        for (int j = 0; j < num_cols; ++j) {
+            dots[i][j] = newDotStates[i][j];
+        }
+    }
+}
+
 void Visualization::printVariable() {
     for(int i = 0; i < num_rows; ++i) {
         for(int j = 0; j < num_cols; ++j) {
