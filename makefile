@@ -1,8 +1,9 @@
+
 # Define the compiler
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -Wall -g
+CXXFLAGS = -Wall -g -std=c++11
 
 # Define any directories containing header files
 INCLUDES = -Iincludes
@@ -11,7 +12,7 @@ INCLUDES = -Iincludes
 SRC_DIR = src
 
 # Define source files
-SOURCES = $(SRC_DIR)/main.cpp $(SRC_DIR)/visualization.cpp
+SOURCES = $(SRC_DIR)/main.cpp # $(SRC_DIR)/dots.cpp
 
 # Define the object files from the source files
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -25,7 +26,7 @@ all: $(EXECUTABLE)
 # Rule for linking the final executable
 # Depends on the object files (the .o files)
 $(EXECUTABLE): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $@ $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $@
 
 # Rule for compiling the source files into object files
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
@@ -37,4 +38,3 @@ clean:
 
 # Define a rule for rebuilding the project
 rebuild: clean all
-
