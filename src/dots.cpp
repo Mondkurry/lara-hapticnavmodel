@@ -30,7 +30,6 @@ void Dots::updateSingleDot(int row, int col, double newState) {
 }
 
 void Dots::printStates() const {
-    std::cout << "\033[2J\033[H";  // Clear Screen
     std::cout << "\u001b[35mDots:\u001b[0m" << std::endl;
     for (int i = 0; i < matrix.rows(); ++i) {
         for (int j = 0; j < matrix.cols(); ++j) {

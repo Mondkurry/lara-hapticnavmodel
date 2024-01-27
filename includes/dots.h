@@ -1,5 +1,6 @@
 #ifndef DOTS_H
 #define DOTS_H
+
 #include "../deps/Eigen/Dense"
 
 class Dots {
