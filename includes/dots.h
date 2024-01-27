@@ -1,17 +1,18 @@
 #ifndef DOTS_H
 #define DOTS_H
+#include "../deps/Eigen/Dense"
 
 class Dots {
-private:
-    int num_rows;
-    int num_cols;
-    int** dots; // This declares the dots member as a 2D dynamic array.
-
 public:
     Dots(int num_rows, int num_cols);
-    ~Dots(); // Destructor to clean up the allocated memory.
-    void updateDots(int** newDotStates); 
-    void printStates();
+    void updateDots(int** newDotStates);
+    void updateSingleDot(int row, int col, double newState);
+    void printStates() const;
+
+private:    
+    int num_rows;
+    int num_cols;
+    Eigen::MatrixXd matrix;
 };
 
 #endif // DOTS_H
