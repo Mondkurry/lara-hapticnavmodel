@@ -39,7 +39,7 @@ void testMotorClass() {
   motors.printAllMotorStates();
 
   //sleep for 200 milliseconds
-  std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+  std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
   // Clear the screen
   clearScreen();
@@ -67,14 +67,14 @@ void dynamicMotorTesting() {
           motors.setMotorState(i, v);
           clearScreen();
           motors.printAllMotorStates();
-          std::this_thread::sleep_for(std::chrono::milliseconds(100));
+          std::this_thread::sleep_for(std::chrono::milliseconds(50));
       }
       // Decrement back to 0.
       for (double v = 0.9; v >= 0; v -= 0.1) {
           motors.setMotorState(i, v);
           clearScreen();
           motors.printAllMotorStates();
-          std::this_thread::sleep_for(std::chrono::milliseconds(100));
+          std::this_thread::sleep_for(std::chrono::milliseconds(50));
       }
   }
 
