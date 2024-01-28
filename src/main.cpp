@@ -77,6 +77,44 @@ void dynamicMotorTesting() {
 
 }
 
+void printHeart() {
+  int setup_size = 5; // 5x5 Setup
+  Dots dots(setup_size, setup_size); // Create a 5x5 matrix.
+  dots.printStates(); // Print the initial matrix.
+  
+  for (int j = 0; j < setup_size; ++j) {
+  // Only need to update the unlocked column because any number of rows can be updated at any time
+      dots.setUnlockedColumn(j);
+      switch (j) {
+        case 0:
+          dots.updateRow(1, 0.8);
+          dots.updateRow(2, 0.8);
+          break;
+        case 1:
+          dots.updateRow(0, 0.5);
+          dots.updateRow(3, 0.5);
+          break;
+        case 2:
+          dots.updateRow(1, 0.8);
+          dots.updateRow(4, 0.8);
+          break;
+        case 3:
+          dots.updateRow(0, 0.5);
+          dots.updateRow(3, 0.5);
+          break;
+        case 4:
+          dots.updateRow(1, 0.8);
+          dots.updateRow(2, 0.8);
+          break;
+      }
+      clearScreen();
+      dots.printStates();
+      std::this_thread::sleep_for(std::chrono::milliseconds(150));
+      }
+      
+ }
+
+
 void testDotsClass() {
   int setup_size = 5; // 5x5 Setup
   Dots dots(setup_size, setup_size); // Create a 5x5 matrix.
@@ -107,7 +145,8 @@ void testDotsClass() {
 
 
 int main() {
-    testDotsClass();
+    printHeart();
+    // testDotsClass();
     // testMotorClass();
     // dynamicMotorTesting();
     return 0;
