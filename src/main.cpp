@@ -1,15 +1,12 @@
 #include "../deps/Eigen/Dense"
 #include "../includes/dots.h"
 #include "../includes/motor.h"
+#include "../includes/utils.h"
 
 #include <iostream>
 #include <iomanip>
 #include <chrono>
 #include <thread>
-
-void clearScreen() {
-    std::cout << "\033[2J\033[H";
-}
 
 void testMotorClass() {
   // Initialize a Motor object with 5 motors
