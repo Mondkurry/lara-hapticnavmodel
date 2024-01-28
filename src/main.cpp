@@ -105,7 +105,5 @@ int main() {
     testDotsClass();
     testMotorClass();
     dynamicMotorTesting();
-
-
     return 0;
 }
