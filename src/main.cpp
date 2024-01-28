@@ -84,18 +84,23 @@ void testDotsClass() {
 
   for (int i = 0; i < setup_size; ++i) {
       for (int j = 0; j < setup_size; ++j) {
-          // Increment from 0 to 1.
-          for (double v = 0.1; v <= 1.0; v += 0.1) {
+
+          if (j % 2 == 0) { // Set Unlocked Column if j is divisible by 2
+              dots.setUnlockedColumn(j);
+          }
+
+          for (double v = 0.1; v <= 1.0; v += 0.1) {  // Increment from 0 to 1.
               dots.updateSingleDot(i, j, v);
               clearScreen();
               dots.printStates();
           }
-          // Decrement back to 0.
-          for (double v = 0.9; v >= 0; v -= 0.1) {
+
+          for (double v = 0.9; v >= 0; v -= 0.1) {    // Decrement back to 0.
               dots.updateSingleDot(i, j, v);
               clearScreen();
               dots.printStates();
           }
+
       }
   }
 }
@@ -103,7 +108,7 @@ void testDotsClass() {
 
 int main() {
     testDotsClass();
-    testMotorClass();
-    dynamicMotorTesting();
+    // testMotorClass();
+    // dynamicMotorTesting();
     return 0;
 }

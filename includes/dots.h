@@ -9,11 +9,14 @@ public:
     void updateDots(int** newDotStates);
     void updateSingleDot(int row, int col, double newState);
     void printStates() const;
+    void setUnlockedColumn(int col);
+    int getUnlockedColumn() const;
 
-private:    
+private:
     int num_rows;
     int num_cols;
     Eigen::MatrixXd matrix;
+    int unlocked_col; // New member variable to track unlocked column
 };
 
 #endif // DOTS_H
