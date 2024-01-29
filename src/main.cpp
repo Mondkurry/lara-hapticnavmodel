@@ -10,7 +10,7 @@
 
 void testMotorClass() {
   // Initialize a Motor object with 5 motors
-  Motor motors(5);
+  Motor motors(5, 0.5);
 
   // Set states and tags for each motor
   motors.setMotorState(0, 10);
@@ -49,32 +49,34 @@ void testMotorClass() {
   std::cout << "Tag: " << motors.getMotorTag(motorIndex) << std::endl;
 }
 
+void waitForStateChange(const Motor& motors, int motorIndex, double targetState) {
+    while (std::abs(motors.getMotorState(motorIndex) - targetState) > 0.01) {
+        clearScreen();
+        motors.printAllMotorStates();
+    }
+}
+
 void dynamicMotorTesting() {
-  // Initialize a Motor object with 5 motors
-  Motor motors(5);
-  motors.setMotorTag(0, "MotorA");
-  motors.setMotorTag(1, "MotorB");
-  motors.setMotorTag(2, "MotorC");
-  motors.setMotorTag(3, "MotorD");
-  motors.setMotorTag(4, "MotorE");
+    // Initialize a Motor object with 5 motors
+    Motor motors(5, 0.5);
+    motors.setMotorTag(0, "MotorA");
+    motors.setMotorTag(1, "MotorB");
+    motors.setMotorTag(2, "MotorC");
+    motors.setMotorTag(3, "MotorD");
+    motors.setMotorTag(4, "MotorE");
 
-  for (int i = 0; i < 5; ++i) {
-      // Increment from 0 to 1.
-      for (double v = 0.1; v <= 1.0; v += 0.1) {
-          motors.setMotorState(i, v);
-          clearScreen();
-          motors.printAllMotorStates();
-          std::this_thread::sleep_for(std::chrono::milliseconds(50));
-      }
-      // Decrement back to 0.
-      for (double v = 0.9; v >= 0; v -= 0.1) {
-          motors.setMotorState(i, v);
-          clearScreen();
-          motors.printAllMotorStates();
-          std::this_thread::sleep_for(std::chrono::milliseconds(50));
-      }
-  }
-
+    for (int i = 0; i < 5; ++i) {
+        // Increment from 0 to 1.
+        for (double v = 0.1; v <= 1.0; v += 0.1) {
+            motors.setMotorState(i, v);
+            waitForStateChange(motors, i, v);
+        }
+        // Decrement back to 0.
+        for (double v = 0.9; v >= 0; v -= 0.1) {
+            motors.setMotorState(i, v);
+            waitForStateChange(motors, i, v);
+        }
+    }
 }
 
 void printHeart() {
@@ -145,9 +147,9 @@ void testDotsClass() {
 
 
 int main() {
-    printHeart();
+    // printHeart();
     // testDotsClass();
     // testMotorClass();
-    // dynamicMotorTesting();
+    dynamicMotorTesting();
     return 0;
 }
