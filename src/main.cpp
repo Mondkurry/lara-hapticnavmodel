@@ -81,7 +81,7 @@ void printHeart() {
   int setup_size = 5; // 5x5 Setup
   Dots dots(setup_size, setup_size); // Create a 5x5 matrix.
   dots.printStates(); // Print the initial matrix.
-  
+
   for (int j = 0; j < setup_size; ++j) {
   // Only need to update the unlocked column because any number of rows can be updated at any time
       dots.setUnlockedColumn(j);
@@ -111,7 +111,7 @@ void printHeart() {
       dots.printStates();
       std::this_thread::sleep_for(std::chrono::milliseconds(150));
       }
-      
+
  }
 
 
