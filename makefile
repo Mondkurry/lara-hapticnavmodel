@@ -12,7 +12,7 @@ INCLUDES = -Iincludes
 SRC_DIR = src
 
 # Define source files
-SOURCES = $(SRC_DIR)/main.cpp  $(SRC_DIR)/dots.cpp $(SRC_DIR)/motor.cpp $(SRC_DIR)/utils.cpp
+SOURCES = $(SRC_DIR)/main.cpp  $(SRC_DIR)/dots.cpp $(SRC_DIR)/motor.cpp $(SRC_DIR)/utils.cpp $(SRC_DIR)/AccelStepperSim.cpp
 
 # Define the object files from the source files
 OBJECTS = $(SOURCES:.cpp=.o)
