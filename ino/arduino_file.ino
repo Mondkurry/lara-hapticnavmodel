@@ -19,6 +19,8 @@ float motor_Acceleration = 15000.0;
 int init_position = 0;
 
 // stop flag is used to set the pinMode
+
+// HUUUUUUHHHHHH WHAT IS THE STOP FLAG AHHHHHHHHHHH
 int stop_flag1 = 44;
 /*
 int stop_flag2 = 44;
