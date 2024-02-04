@@ -1,12 +1,12 @@
-// AccelStepperSim.h
-#ifndef AccelStepperSim_h
-#define AccelStepperSim_h
+#ifndef ACCELSTEPPERSIM_H
+#define ACCELSTEPPERSIM_H
 
-unsigned long micros();
+#include <chrono>
 
 class AccelStepperSim {
 public:
-    AccelStepperSim(int type, int pin1, int pin2, int pin3, int pin4);
+    AccelStepperSim(int type, int pin1, int pin2 = 0, int pin3 = 0, int pin4 = 0);
+    
     void moveTo(long absolute);
     void move(long relative);
     bool runSpeed();
@@ -14,7 +14,6 @@ public:
     void computeNewSpeed();
     bool run();
     void stop();
-
     long distanceToGo() const;
     long targetPosition() const;
     long currentPosition() const;
@@ -22,12 +21,11 @@ public:
     void setAcceleration(float acceleration);
     void setSpeed(float speed);
     float speed() const;
-
-    // Additional simulation-specific methods
-    void printState();
+    void printState() const;
     float getRotations() const;
 
 private:
+    unsigned long micros() const;
     int _interfaceType;
     long _currentPos;
     long _targetPos;
@@ -35,11 +33,11 @@ private:
     float _acceleration;
     float _speed;
     unsigned long _lastStepTime;
-    float _stepInterval;
-    bool _direction; // true for CW, false for CCW
+    unsigned long _stepInterval;
+    bool _direction;
 
-    // Private methods
-    void updatePosition();
+    // Not implemented in simulation but required for interface compatibility
+    int _pin1, _pin2, _pin3, _pin4;
 };
 
-#endif
+#endif // ACCELSTEPPERSIM_H
